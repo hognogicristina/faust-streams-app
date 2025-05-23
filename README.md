@@ -1,10 +1,12 @@
-## Real-Time Sensor Monitoring System (Kafka + Faust)
+## Real-Time Sensor Monitoring System
 
 ### Overview
 
 This project simulates a real-time environmental monitoring system using data streams from IoT sensors placed in different rooms of a smart
-home. The system uses **Apache Kafka** as a streaming platform and **Faust (Python)** as the stream processing engine. Sensor data is read
-from a CSV file and sent to Kafka topics, while Faust processes the data in real time and triggers alerts or logs computed metrics.
+home. The system uses **Apache Kafka** as a streaming platform, **Faust (Python)** as the stream processing engine, and **Docker** to run
+the Kafka and Zookeeper services. The goal is to monitor various environmental parameters such as temperature, light, sound, CO2 levels, and
+occupancy in real time. Sensor data is read from a CSV file and sent to Kafka topics, while Faust processes the data in real time and
+triggers alerts or logs computed metrics.
 
 ---
 
