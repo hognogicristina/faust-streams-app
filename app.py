@@ -1,5 +1,6 @@
 import faust
 
+# Faust application for processing sensor data streams
 app = faust.App(
     'sensor-stream-app',
     broker='kafka://localhost:9092',
@@ -7,6 +8,7 @@ app = faust.App(
 )
 
 
+# Define the data models for each sensor reading
 class Temperature(faust.Record):
     room: str
     value: float
@@ -37,7 +39,7 @@ class Occupancy(faust.Record):
     count: int
 
 
-# Topics
+# Topics for each sensor reading
 temperature_topic = app.topic('temperature-readings', value_type=Temperature)
 co2_topic = app.topic('co2-readings', value_type=CO2)
 motion_topic = app.topic('motion-readings', value_type=Motion)
@@ -45,7 +47,7 @@ light_topic = app.topic('light-readings', value_type=Light)
 sound_topic = app.topic('sound-readings', value_type=Sound)
 occupancy_topic = app.topic('occupancy-readings', value_type=Occupancy)
 
-# Tables
+# Tables to store the latest readings and averages
 latest_temp = app.Table('latest_temp', default=float)
 latest_motion = app.Table('latest_motion', default=bool)
 temp_avg = app.Table('temp_avg', default=float)
